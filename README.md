@@ -67,11 +67,20 @@ Data Splitting Notebook: [notebooks/Data_Splitting_Nano_SLMs_Function_Calling_Sa
 | emissions_kg | Estimated total CO₂ emissions in kilograms |
 | emissions_g  | Estimated total CO₂ emissions in grams     |
 
-## Model Description
+## Qwen 2.5 0.5B Instruct (+ results)
 
 | No. | Base model | Fine-tuned HF Model Link | supported languages | repo files size | `note` | `tokens_per_sec` | `requests_per_sec` | `args_exact_pct` | `notebook` |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | 1 | [Qwen/Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) | [silvermete0r/qwen2.5-nano-function-master](https://huggingface.co/silvermete0r/qwen2.5-nano-function-master) | ~29 | 1GB | `fine-tuned` | `154` | `2.0` | `69.1%` | [notebook-link](notebooks/SLM_Qwen2_5_0_5B_Fine_Tuning_for_Function_Calling_Tasks.ipynb) |
+
+```
+Metric                           Before      After      Delta
+--------------------------------------------------------------
+json_valid_pct                     45.4       98.7      +53.3
+name_match_pct                     15.0       93.3      +78.3
+args_keys_match_pct                11.8       81.0      +69.2
+args_exact_pct                      8.9       69.1      +60.2
+```
 
 *Benchmarking the current SOTA model for function-calling based on our testing set (~1000 samples):*
 
