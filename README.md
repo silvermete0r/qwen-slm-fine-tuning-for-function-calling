@@ -1,6 +1,6 @@
-# Fast Nano SLMs (Fine-Tuning & Optimization)
+# Fine-Tuning Qwen for Function-Calling tasks
 
-**Main Goal:** Optimizing Inference and Memory Efficiency for Function-calling tasks (fine-tuning) in private/resource-constrained environments.
+Lightweight function-calling model fine-tuned using `LoRA SFT (full-precision)` based on the `Salesforce/xlam-function-calling-60k dataset`
 
 ![nano_slm_use_case_illustration_by_chatgpt_image_2](assets/nano_slm_api_router_iot_use_case_diagram.png)
 
@@ -67,17 +67,11 @@ Data Splitting Notebook: [notebooks/Data_Splitting_Nano_SLMs_Function_Calling_Sa
 | emissions_kg | Estimated total CO₂ emissions in kilograms |
 | emissions_g  | Estimated total CO₂ emissions in grams     |
 
-## Nano Function Calling Master SLMs Zoo
-
-Lightweight function-calling models fine-tuned using `LoRA SFT (full-precision)` based on the `Salesforce/xlam-function-calling-60k dataset`
+## Model Description
 
 | No. | Base model | Fine-tuned HF Model Link | supported languages | repo files size | `note` | `tokens_per_sec` | `requests_per_sec` | `args_exact_pct` | `notebook` |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
 | 1 | [Qwen/Qwen2.5-0.5B-Instruct](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct) | [silvermete0r/qwen2.5-nano-function-master](https://huggingface.co/silvermete0r/qwen2.5-nano-function-master) | ~29 | 1GB | `fine-tuned` | `154` | `2.0` | `69.1%` | [notebook-link](notebooks/SLM_Qwen2_5_0_5B_Fine_Tuning_for_Function_Calling_Tasks.ipynb) |
-| 2 | [Qwen/Qwen3-0.6B](https://huggingface.co/Qwen/Qwen3-0.6B) | `waiting..` | 100+ | 1.52GB | `waiting..` | `waiting..` | `waiting..` | `waiting..` | [notebook-link](notebooks/SLM_Qwen3_0_0_6B_Batch_Inference_Testing_Function_Calling_Tasks.ipynb) |
-| 3 | [HuggingFaceTB/SmolLM2-135M-Instruct](https://huggingface.co/HuggingFaceTB/SmolLM2-135M-Instruct) | `...` | primarily for English | ~1.97GB | `` | `` | `` | `` |
-| 4 | [google/gemma-3-270m-it](https://huggingface.co/google/gemma-3-270m-it) | `...` | 140+ | 575MB | `` | `` | `` | `` |
-| 5 | [openbmb/MiniCPM5-1B](https://huggingface.co/openbmb/MiniCPM5-1B) | `...` | primarily English and Chinese | ~2.17GB | `` | `` | `` | `` |
 
 *Benchmarking the current SOTA model for function-calling based on our testing set (~1000 samples):*
 
@@ -89,17 +83,7 @@ Lightweight function-calling models fine-tuned using `LoRA SFT (full-precision)`
 
 > We have implemented a custom `functiongemma -> json xlam-60k format` converter, and it does not always work reliably across all cases. So, it is important to emphasize that this is not a benchmark or a meaningful accuracy evaluation, since the model was not fine-tuned for tasks like in this dataset (probably).
 
-> Nevertheless, the results of the functiongemma are impressive, showing `50.4%` accuracy in the overall answers. As function calling is the core specialization of the model, FunctionGemma already outperforms non-fine-tuned base SLMs on function-calling tasks. 
-
-## Relevant Resources
-
-1. Responsible Generative AI Toolkit: Tools and guidance to design, build and evaluate open AI models responsibly. https://ai.google.dev/responsible
-2. Google’s Secure AI Framework (SAIF): https://safety.google/safety/saif/
-3. No-Code Fine-tuning web platform for gemma-270m: https://huggingface.co/spaces/google/functiongemma-tuning-lab
-
-## Competitions
-
-1. [Build Small Hackathon by Gradio & HuggingFace 🤗](https://huggingface.co/build-small-hackathon)
+> Nevertheless, the results of the functiongemma are impressive, showing `50.4%` accuracy in the overall answers. As function calling is the core specialization of the model, FunctionGemma already outperforms non-fine-tuned base SLM on function-calling tasks.
 
 ## References
 
